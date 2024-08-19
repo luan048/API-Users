@@ -13,13 +13,14 @@ const database = new Sequelize(
     }
 )
 
-database.authenticate()
-    .then(function() {
-        console.log('Conectado com Sucesso')
-    })
-
-    .catch(function(erro) {
-        console.log('Erro ao se Conectar'+erro)
-    })
+export async function tryToConnect(){
+    try{
+        database.sync({force: true})
+        await database.authenticate()
+        console.log("Connection Established")
+    }catch (error){
+        console.log("Error trying to establish connection")
+    }
+}
 
 export {database}

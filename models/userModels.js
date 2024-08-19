@@ -23,4 +23,6 @@ export const UserModel = database.define("clients", {
         type: DataTypes.STRING(20),
         allowNull: false,
     }
+}, {
+    timestamps: false // Desativa o TimeStamps para não adicionar mais nd no DB
 })
