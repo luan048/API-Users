@@ -37,19 +37,32 @@ export class UserServices{
 
     async getUser(id) {
         try {
-            await database.sync()
             const user = await UserModel.findByPk(id)
+            if (user) {
+                return {
+                    statusValue: 200,
+                    message: 'Successfully',
+                    user: user
+                }
+            } 
+            
+            else {
+                return {
+                    statusValue: 404,
+                    message: 'User not found'
+                }
+            }
+        } 
+        
+        catch (error) {
+            console.log('Error on Get Services:', error)
             return {
-                statusValue: 200,
-                message: 'Sucessfully',
-                user: user
+                statusValue: 500,
+                message: 'Internal Server Error'
             }
         }
-
-        catch(error) {
-            console.log('Error on Get Services: ' +error)
-        }
     }
+    
 
     async updateJob(id, newJob) {
         try {

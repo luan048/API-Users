@@ -18,19 +18,20 @@ export class UserValidator {
     }
 
     async getUserValidation(req, res, next) {
-        const {id} = req.body
+        const { id } = req.params
         const errors = []
-
-        if(!id) {
-            errors.push('id vazio')
+    
+        if (!id) {
+            errors.push('ID vazio')
         }
-
-        if(errors.length) {
-            return res.status(404).json({errors})
+    
+        if (errors.length) {
+            return res.status(400).json({ errors })
         }
-
+    
         next()
     }
+    
 
     async updateJobValidation(req, res, next) {
         const {id, newJob} = req.body
@@ -51,7 +52,7 @@ export class UserValidator {
     }
 
     async delJobValidation(req, res, next) {
-        const {id} = req.body
+        const {id} = req.params
         const errors = []
 
         if(!id) {

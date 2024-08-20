@@ -13,15 +13,16 @@ routerUser.get('/', getAllUsers), async(req, res) => {
     return await getAllUsers(req, res)
 }
 
-routerUser.get('/getUsers', instanceUserValidator.getUserValidation), async (req, res) => {
+routerUser.get('/getUsers/:id', instanceUserValidator.getUserValidation, async (req, res) => {
     return await getUser(req, res)
-}
+})
+
 
 routerUser.put('/upJobsofUser', instanceUserValidator.updateJobValidation), async (req, res) => {
     return await updateJob(req, res)
 }
 
-routerUser.delete('/delUsers', instanceUserValidator.updateJobValidation), async (req, res) => {
+routerUser.delete('/delUsers/:id', instanceUserValidator.delJobValidation), async (req, res) => {
     return await delUser(req, res)
 }
 
