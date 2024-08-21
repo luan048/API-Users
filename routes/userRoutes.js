@@ -18,12 +18,12 @@ routerUser.get('/getUsers/:id', instanceUserValidator.getUserValidation, async (
 })
 
 
-routerUser.put('/upJobsofUser', instanceUserValidator.updateJobValidation), async (req, res) => {
+routerUser.put('/upJobsofUser/:id', instanceUserValidator.updateJobValidation, async (req, res) => {
     return await updateJob(req, res)
-}
+})
 
-routerUser.delete('/delUsers/:id', instanceUserValidator.delJobValidation), async (req, res) => {
+routerUser.delete('/delUsers/:id', instanceUserValidator.delJobValidation, async (req, res) => {
     return await delUser(req, res)
-}
+})
 
 export {routerUser}

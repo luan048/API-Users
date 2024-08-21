@@ -34,8 +34,9 @@ export class UserValidator {
     
 
     async updateJobValidation(req, res, next) {
-        const {id, newJob} = req.body
-        const fields = ["id", "newJob"]
+        const {id} = req.params
+        const {newJob} = req.body
+        const fields = ["newJob"]
         const errors = []
 
         for(const field of fields) {

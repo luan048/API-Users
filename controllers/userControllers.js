@@ -34,7 +34,8 @@ export async function getUser(req, res) {
 
 
 export async function updateJob(req, res) {
-    const {id} = req.body
+    const {id} = req.params
+    const {newJob} = req.body
     await instanceUserServices.updateJob(id, newJob)
     return res.status(200).json({message: 'Sucessfully'})
 }
