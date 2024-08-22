@@ -13,13 +13,15 @@ const database = new Sequelize(
     }
 )
 
+
+//Serve para fazer a conexão do Models, do banco de dados, com o MySql
 export async function tryToConnect(){
     try{
-        database.sync({alter: true})
+        database.sync({alter: true}) //Alter aprenas para alteração/atualização, do DB, na primeira criação, force
         await database.authenticate()
         console.log("Connection Established")
     }catch (error){
-        console.log("Error trying to establish connection")
+        console.log("Error trying to establish connection", error)
     }
 }
 
